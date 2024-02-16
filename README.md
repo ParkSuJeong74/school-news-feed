@@ -39,6 +39,10 @@ $ yarn install
 $ cd docker
 $ docker-compose -f docker-compose.yml up -d --build
 
+# node version
+$ nvm install
+$ nvm use
+
 # development
 $ yarn run start
 
