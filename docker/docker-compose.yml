@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  local-classting-postgresql:
+    build:
+      context: ./postgresql
+      dockerfile: Dockerfile
+    container_name: local-classting-postgresql
+    ports:
+      - '54325:5432'
+    environment:
+      - POSTGRES_USER=classting
+      - POSTGRES_PASSWORD=classting
+      - POSTGRES_DB=classting
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+    restart: always
