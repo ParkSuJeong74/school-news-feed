@@ -53,6 +53,40 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
+## ERD
+```mermaid
+erDiagram
+  schoolAdmin ||--|| school : ""
+  school ||--o{ news : ""
+  student ||--o{ subscribeSchoolStudent : ""
+  school ||--o{ subscribeSchoolStudent : ""
+
+  schoolAdmin {
+    number id "PK"
+    number name
+  }
+  school {
+    number id "PK"
+    number schoolAdminId "FK"
+    string name
+    string region
+  }
+  student {
+    number id "PK"
+    string name
+  }
+  news {
+    number id "PK"
+    number schoolId "FK"
+    string content
+  }
+  subscribeSchoolStudent {
+    number studentId "FK"
+    number schoolId "FK"
+  }
+```
+
+
 ## Test
 
 ```bash
