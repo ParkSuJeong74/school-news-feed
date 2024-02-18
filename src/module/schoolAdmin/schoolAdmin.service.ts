@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
+import { RequestCreateSchoolAdminDto } from './dto/requestSchoolAdmin.dto';
 import { SchoolAdminRepository } from './schoolAdmin.repository';
 
 @Injectable()
 export class SchoolAdminService {
-  async createSchoolAdmin(body: { name: string }) {
+  async createSchoolAdmin(body: RequestCreateSchoolAdminDto) {
     try {
       await SchoolAdminRepository.save(body);
     } catch (err) {
