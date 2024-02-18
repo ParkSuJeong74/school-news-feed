@@ -7,3 +7,13 @@ export interface SubscribeSchoolStudentInterface {
   studentId: number;
   student: StudentInterface;
 }
+
+export type RequestCreateSubscribeSchoolStudentInterface = Pick<
+  SubscribeSchoolStudentInterface,
+  'schoolId' | 'studentId'
+>;
+
+export type ResponseSubscribeSchoolStudentInterface = Pick<
+  SubscribeSchoolStudentInterface,
+  'school'
+>;

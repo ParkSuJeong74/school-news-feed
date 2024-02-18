@@ -3,10 +3,12 @@ import {
   Column,
   Entity,
   JoinColumn,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { BasicEntity } from './basic.entity';
+import { NewsEntity } from './news.entity';
 import { SchoolAdminEntity } from './schoolAdmin.entity';
 
 @Entity('school')
@@ -25,4 +27,8 @@ export class SchoolEntity extends BasicEntity implements SchoolInterface {
   schoolAdmin: SchoolAdminEntity;
   @Column()
   schoolAdminId: number;
+
+  @OneToMany(() => NewsEntity, (news) => news.school)
+  @JoinColumn([{ name: 'school_id', referencedColumnName: 'id' }])
+  news: NewsEntity[];
 }

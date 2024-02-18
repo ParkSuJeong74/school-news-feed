@@ -5,7 +5,7 @@ import { SchoolEntity } from './school.entity';
 import { StudentEntity } from './student.entity';
 
 @Entity('subscribe_school_student')
-export class SubscribeSchoolStudent
+export class SubscribeSchoolStudentEntity
   extends BasicEntity
   implements SubscribeSchoolStudentInterface
 {
