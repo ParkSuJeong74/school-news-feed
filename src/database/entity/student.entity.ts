@@ -1,9 +1,9 @@
-import { SchoolInterface } from '@src/interface/school.interface';
+import { StudentInterface } from '@src/interface/student.interface';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicEntity } from './basic.entity';
 
 @Entity('student')
-export class StudentEntity extends BasicEntity implements SchoolInterface {
+export class StudentEntity extends BasicEntity implements StudentInterface {
   @PrimaryGeneratedColumn()
   id: number;
 
