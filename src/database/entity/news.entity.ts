@@ -1,11 +1,17 @@
 import { NewsInterface } from '@src/interface/news.interface';
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { BasicEntity } from './basic.entity';
 import { SchoolEntity } from './school.entity';
 
 @Entity('news')
 export class NewsEntity extends BasicEntity implements NewsInterface {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column()

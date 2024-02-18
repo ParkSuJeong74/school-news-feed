@@ -1,11 +1,17 @@
 import { SchoolInterface } from '@src/interface/school.interface';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { BasicEntity } from './basic.entity';
 import { SchoolAdminEntity } from './schoolAdmin.entity';
 
 @Entity('school')
 export class SchoolEntity extends BasicEntity implements SchoolInterface {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column()

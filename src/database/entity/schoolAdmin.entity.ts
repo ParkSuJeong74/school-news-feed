@@ -1,5 +1,5 @@
 import { SchoolAdminInterface } from '@src/interface/schoolAdmin.interface';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicEntity } from './basic.entity';
 
 @Entity('school_admin')
@@ -7,7 +7,7 @@ export class SchoolAdminEntity
   extends BasicEntity
   implements SchoolAdminInterface
 {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column()

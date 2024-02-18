@@ -28,5 +28,6 @@ export class DataSources {
 export function getEntityManager(
   source: EntityManager | DataSource,
 ): EntityManager | DataSource {
+  ConfigProvider.initialize();
   return source ?? DataSources.instance;
 }
