@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: local-classting-postgresql
     ports:
-      - '54325:5432'
+      - '54326:5432'
     environment:
       - POSTGRES_USER=classting
       - POSTGRES_PASSWORD=classting
