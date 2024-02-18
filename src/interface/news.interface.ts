@@ -5,4 +5,15 @@ export interface NewsInterface {
   content: string;
   schoolId: number;
   school: SchoolInterface;
+  createdAt: Date;
 }
+
+export type RequestCreateNewsInterface = Pick<
+  NewsInterface,
+  'content' | 'schoolId'
+>;
+export type RequestUpdateNewsInterface = Pick<NewsInterface, 'content'>;
+export type ResponseNewsInterface = Pick<
+  NewsInterface,
+  'content' | 'id' | 'schoolId' | 'createdAt'
+>;
