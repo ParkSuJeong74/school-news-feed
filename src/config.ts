@@ -20,6 +20,8 @@ interface IConfig {
     logging: boolean;
     migrationsRun: boolean;
     synchronize: boolean;
+    entities: string[];
+    migrations: string[];
   };
 }
 
@@ -56,6 +58,8 @@ export class ConfigProvider {
         logging: true,
         migrationsRun: config.get<boolean>('postgresql.migrationsRun'),
         synchronize: false,
+        entities: config.get<string[]>('postgresql.entities'),
+        migrations: config.get<string[]>('postgresql.migrations'),
       },
     };
 

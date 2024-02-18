@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { DataSources } from 'database/data-source';
+import { DataSources } from '@src/database/data-source';
 import { AppModule } from './app.module';
 import { ConfigProvider } from './config';
 

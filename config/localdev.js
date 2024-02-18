@@ -8,5 +8,7 @@ module.exports = {
     password: 'classting',
     database: 'classting',
     migrationsRun: true,
+    entities: ['dist/src/database/entity/*.entity.{ts,js}'],
+    migrations: ['dist/src/database/migration/*.{ts,js}'],
   },
 };
