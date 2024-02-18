@@ -5,7 +5,7 @@ import { ResponseSchoolAdminDto } from './dto/responseSchoolAdmin.dto';
 import { SchoolAdminService } from './schoolAdmin.service';
 
 @ApiTags('SchoolAdmin')
-@Controller('school-admin')
+@Controller('school-admins')
 export class SchoolAdminController {
   constructor(private readonly schoolAdminService: SchoolAdminService) {}
 

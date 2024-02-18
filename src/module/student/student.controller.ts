@@ -5,7 +5,7 @@ import { ResponseStudentDto } from './dto/responseStudent.dto';
 import { StudentService } from './student.service';
 
 @ApiTags('Student')
-@Controller('student')
+@Controller('students')
 export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
