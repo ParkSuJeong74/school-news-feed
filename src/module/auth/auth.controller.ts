@@ -8,7 +8,7 @@ import { ConfigProvider } from '@src/config';
 export class AuthController {
   constructor(private jwtService: JwtService) {}
 
-  @Post('login/student/:studentId')
+  @Post('login/students/:studentId')
   @ApiOperation({ summary: '학생 로그인' })
   async student(
     @Res({ passthrough: true }) res: any,
@@ -31,7 +31,7 @@ export class AuthController {
     );
   }
 
-  @Post('login/school-admin/:schoolAdminId')
+  @Post('login/school-admins/:schoolAdminId')
   @ApiOperation({ summary: '학교 관리자 로그인' })
   async schoolAdmin(
     @Res({ passthrough: true }) res: any,

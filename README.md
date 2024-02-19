@@ -94,7 +94,14 @@ POST /school-admins
 GET /school-admins
 ```
 
-1-1. 학교 관리자 로그인, 로그아웃
+1-1. 학교 관리자 로그인
+
+```
+학교 관리자 로그인 API
+POST /auth/login/school-admins/:schoolAdminId
+
+로그인 후 이용할 수 있는 서비스 : 학교 페이지 API, 학교 소식 API
+```
 
 2. 학교 페이지 생성 및 목록 조회
 
@@ -146,7 +153,15 @@ POST /students
 GET /students
 ```
 
-4-1. 학생 로그인, 로그아웃
+4-1. 학생 로그인
+
+```
+학생 로그인 API
+POST /auth/login/students/:studentId
+
+로그인 후 이용할 수 있는 서비스 : 뉴스피드 API, 구독 API
+```
+
 
 5. 학생의 학교 구독 및 구독한 학교, 소식 목록 조회, 구독 취소 (최신순 노출)
 
@@ -186,12 +201,6 @@ $ yarn run test
 # test coverage
 $ yarn run test:cov
 ```
-
-테스트 커버리지 공유
-
-| stmsts | branch | funcs | lines |
-|--------|--------|-------|-------|
-| stmsts | branch | funcs | lines |
 
 
 ## Support
