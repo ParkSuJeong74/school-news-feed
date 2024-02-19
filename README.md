@@ -24,7 +24,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+학교 소식을 전달하고 받아보는 학교소식 뉴스피드를 위한 백엔드 구현
 
 ## Installation
 
@@ -36,21 +36,14 @@ $ yarn install
 
 ```bash
 # docker
-$ cd docker
-$ docker-compose -f docker-compose.yml up -d --build
+$ docker-compose -f docker/docker-compose.yml up -d --build
 
 # node version
 $ nvm install
 $ nvm use
 
-# development
-$ yarn run start
-
-# watch mode
+# watch mode running
 $ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
 ```
 
 ## ERD
@@ -86,6 +79,103 @@ erDiagram
   }
 ```
 
+## 구현 기능
+
+1. 학교 관리자 생성 및 목록 조회
+
+```
+학교 관리자를 생성할 수 있는 API
+POST /school-admins
+{
+  name: string
+}
+
+생성된 모든 학교 관리자를 조회할 수 있는 API
+GET /school-admins
+```
+
+1-1. 학교 관리자 로그인, 로그아웃
+
+2. 학교 페이지 생성 및 목록 조회
+
+```
+학교를 생성할 수 있는 API
+POST /schools
+{
+  name: string,
+  region: string
+}
+
+생성된 모든 학교를 조회할 수 있는 API
+GET /schools
+```
+
+3. 학교 관리자가 학교 페이지에 소식 작성, 수정, 삭제
+
+```
+학교 소식을 생성할 수 있는 API
+POST /schools/:schoolId/news
+{
+  content: string,
+  schoolId: number
+}
+
+생성된 모든 소식을 조회할 수 있는 API
+GET /schools/:schoolId/news
+
+특정 소식 내용을 수정할 수 있는 API
+PUT /schools/:schoolId/news/:newsId
+{
+  content: string
+}
+
+특정 소식을 삭제할 수 있는 API
+DELETE /schools/:schoolId/news/:newsId
+```
+
+4. 학생 생성 및 목록 조회
+
+```
+학생을 생성할 수 있는 API
+POST /students
+{
+  name: string
+}
+
+생성된 모든 학생을 조회할 수 있는 API
+GET /students
+```
+
+4-1. 학생 로그인, 로그아웃
+
+5. 학생의 학교 구독 및 구독한 학교, 소식 목록 조회, 구독 취소 (최신순 노출)
+
+```
+학생이 학교 페이지 구독하는 API
+POST /subscribe/schools
+{
+  schoolId: string
+}
+
+학생이 구독중인 학교 페이지 목록을 조회하는 API
+GET /subscribe/schools
+
+학생이 학교 페이지 구독 취소하는 API
+DELETE /subscribe/schools
+
+학생이 구독한 학교 페이지의 뉴스피드 목록 조회하는 API
+GET /subscribe/schools/news
+```
+
+6. 학생이 구독중인 학교 소식 뉴스피드 조회
+```
+뉴스피드 목록 조회하는 API
+GET /news-feed
+```
+
+## API DOCS (Swagger)
+
+실행 후 http://localhost:3000/api/docs
 
 ## Test
 
@@ -93,12 +183,16 @@ erDiagram
 # unit tests
 $ yarn run test
 
-# e2e tests
-$ yarn run test:e2e
-
 # test coverage
 $ yarn run test:cov
 ```
+
+테스트 커버리지 공유
+
+| stmsts | branch | funcs | lines |
+|--------|--------|-------|-------|
+| stmsts | branch | funcs | lines |
+
 
 ## Support
 
