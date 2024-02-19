@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { SchoolAdminId } from '@src/decorator/auth.decorator';
 import { SchoolAdminJwtAuthGuard } from '../auth/auth.guard';
 import { RequestCreateSchoolDto } from './dto/requestSchool.dto';
 import { ResponseSchoolDto } from './dto/responseSchool.dto';
@@ -13,8 +14,11 @@ export class SchoolController {
 
   @Post()
   @ApiOperation({ summary: '1. 학교 페이지 생성' })
-  async create(@Body() body: RequestCreateSchoolDto) {
-    await this.schoolService.createSchool(body);
+  async create(
+    @SchoolAdminId() schoolAdminId: number,
+    @Body() body: RequestCreateSchoolDto,
+  ) {
+    await this.schoolService.createSchool(schoolAdminId, body);
   }
 
   @Get()

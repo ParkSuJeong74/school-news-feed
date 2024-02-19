@@ -1,7 +1,11 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import {
+  SchoolAdminAuthMiddleware,
+  StudentAuthMiddleware,
+} from './middleware/auth.middleware';
 import { AuthController } from './module/auth/auth.controller';
 import { NewsController } from './module/news/news.controller';
 import { NewsModule } from './module/news/news.module';
@@ -38,4 +42,9 @@ import { SubscribeSchoolStudentModule } from './module/subscribeSchoolStudent/su
   ],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(SchoolAdminAuthMiddleware).forRoutes('/');
+    consumer.apply(StudentAuthMiddleware).forRoutes('/');
+  }
+}

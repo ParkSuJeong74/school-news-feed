@@ -19,14 +19,6 @@ export class RequestCreateNewsDto implements RequestCreateNewsInterface {
   })
   @IsNumber()
   schoolId: number;
-
-  // TODO: 로그인 기능 개발시 삭제
-  @ApiProperty({
-    description: '학교 관리자 ID',
-    example: 1,
-  })
-  @IsNumber()
-  schoolAdminId: number;
 }
 
 export class RequestUpdateNewsDto implements RequestUpdateNewsInterface {
@@ -36,12 +28,4 @@ export class RequestUpdateNewsDto implements RequestUpdateNewsInterface {
   })
   @IsString()
   content: string;
-
-  // TODO: 로그인 기능 개발시 삭제
-  @ApiProperty({
-    description: '학교 관리자 ID',
-    example: 1,
-  })
-  @IsNumber()
-  schoolAdminId: number;
 }

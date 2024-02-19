@@ -6,9 +6,9 @@ import { SchoolRepository } from './school.repository';
 
 @Injectable()
 export class SchoolService {
-  async createSchool(body: RequestCreateSchoolDto) {
+  async createSchool(schoolAdminId: number, body: RequestCreateSchoolDto) {
     const school = await SchoolRepository.findOneBy({
-      schoolAdminId: body.schoolAdminId,
+      schoolAdminId,
     });
     if (school) {
       throw new Error('이미 관리 학교가 존재합니다.');

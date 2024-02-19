@@ -9,6 +9,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { SchoolAdminId } from '@src/decorator/auth.decorator';
 import { SchoolAdminJwtAuthGuard } from '../auth/auth.guard';
 import {
   RequestCreateNewsDto,
@@ -25,8 +26,11 @@ export class NewsController {
 
   @Post()
   @ApiOperation({ summary: '2. 소식 작성' })
-  async create(@Body() body: RequestCreateNewsDto) {
-    await this.newsService.createNews(body);
+  async create(
+    @SchoolAdminId() schoolAdminId: number,
+    @Body() body: RequestCreateNewsDto,
+  ) {
+    await this.newsService.createNews(schoolAdminId, body);
   }
 
   @Get()
@@ -42,13 +46,17 @@ export class NewsController {
   async update(
     @Param('newsId') newsId: number,
     @Body() body: RequestUpdateNewsDto,
+    @SchoolAdminId() schoolAdminId: number,
   ) {
-    await this.newsService.updateNews(newsId, body);
+    await this.newsService.updateNews(schoolAdminId, newsId, body);
   }
 
   @Delete(':newsId')
   @ApiOperation({ summary: '3. 소식 삭제' })
-  async delete(@Param('newsId') newsId: number) {
-    await this.newsService.deleteNews(newsId);
+  async delete(
+    @SchoolAdminId() schoolAdminId: number,
+    @Param('newsId') newsId: number,
+  ) {
+    await this.newsService.deleteNews(schoolAdminId, newsId);
   }
 }

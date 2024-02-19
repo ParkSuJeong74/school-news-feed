@@ -39,9 +39,9 @@ export class SubscribeSchoolStudentService {
     }
   }
 
-  async findSchoolList() {
+  async findSchoolList(studentId: number) {
     return await SubscribeSchoolStudentRepository.find({
-      where: { studentId: 1 }, // TODO: 로그인 구현 후 수정
+      where: { studentId },
       relations: ['school'],
     });
   }

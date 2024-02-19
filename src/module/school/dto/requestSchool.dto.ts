@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { RequestCreateStudentInterface } from '@src/interface/student.interface';
-import { IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class RequestCreateSchoolDto implements RequestCreateStudentInterface {
   @ApiProperty({
@@ -16,12 +16,4 @@ export class RequestCreateSchoolDto implements RequestCreateStudentInterface {
   })
   @IsString()
   region: string;
-
-  // TODO: 로그인 구현시 삭제
-  @ApiProperty({
-    description: '학교 관리자 ID',
-    example: 1,
-  })
-  @IsNumber()
-  schoolAdminId: number;
 }
