@@ -6,8 +6,10 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { SchoolAdminJwtAuthGuard } from '../auth/auth.guard';
 import {
   RequestCreateNewsDto,
   RequestUpdateNewsDto,
@@ -16,6 +18,7 @@ import { ResponseNewsDto } from './dto/responseNews.dto';
 import { NewsService } from './news.service';
 
 @ApiTags('News')
+@UseGuards(SchoolAdminJwtAuthGuard)
 @Controller('schools/:schoolId/news')
 export class NewsController {
   constructor(private readonly newsService: NewsService) {}

@@ -1,5 +1,14 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { StudentJwtAuthGuard } from '../auth/auth.guard';
 import { RequestCreateSubscribeSchoolStudentDto } from './dto/requestSubscribeSchoolStudent.dto';
 import {
   ResponseSubscribeSchoolNewsDto,
@@ -8,6 +17,7 @@ import {
 import { SubscribeSchoolStudentService } from './subscribeSchoolStudent.service';
 
 @ApiTags('SubscribeSchoolStudent')
+@UseGuards(StudentJwtAuthGuard)
 @Controller('subscribe/schools')
 export class SubscribeSchoolStudentController {
   constructor(

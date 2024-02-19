@@ -1,10 +1,12 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { SchoolAdminJwtAuthGuard } from '../auth/auth.guard';
 import { RequestCreateSchoolDto } from './dto/requestSchool.dto';
 import { ResponseSchoolDto } from './dto/responseSchool.dto';
 import { SchoolService } from './school.service';
 
 @ApiTags('School')
+@UseGuards(SchoolAdminJwtAuthGuard)
 @Controller('school')
 export class SchoolController {
   constructor(private readonly schoolService: SchoolService) {}

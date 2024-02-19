@@ -11,4 +11,14 @@ module.exports = {
     entities: ['dist/src/database/entity/*.entity.{ts,js}'],
     migrations: ['dist/src/database/migration/*.{ts,js}'],
   },
+  jwt: {
+    access: {
+      secret: 'classting_access_secret',
+      expiresIn: '2h',
+    },
+    refresh: {
+      secret: 'classting_refresh_secret',
+      expiresIn: '30d',
+    },
+  },
 };

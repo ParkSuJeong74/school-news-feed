@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthController } from './module/auth/auth.controller';
 import { NewsController } from './module/news/news.controller';
 import { NewsModule } from './module/news/news.module';
 import { NewsFeedController } from './module/newsFeed/newsFeed.controller';
@@ -22,6 +24,7 @@ import { SubscribeSchoolStudentModule } from './module/subscribeSchoolStudent/su
     StudentModule,
     SubscribeSchoolStudentModule,
     NewsFeedModule,
+    JwtModule,
   ],
   controllers: [
     AppController,
@@ -31,6 +34,7 @@ import { SubscribeSchoolStudentModule } from './module/subscribeSchoolStudent/su
     NewsController,
     SubscribeSchoolStudentController,
     NewsFeedController,
+    AuthController,
   ],
   providers: [AppService],
 })

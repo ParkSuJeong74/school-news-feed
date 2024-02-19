@@ -23,6 +23,16 @@ interface IConfig {
     entities: string[];
     migrations: string[];
   };
+  jwt: {
+    access: {
+      secret: string;
+      expiresIn: string;
+    };
+    refresh: {
+      secret: string;
+      expiresIn: string;
+    };
+  };
 }
 
 export class ConfigProvider {
@@ -60,6 +70,16 @@ export class ConfigProvider {
         synchronize: false,
         entities: config.get<string[]>('postgresql.entities'),
         migrations: config.get<string[]>('postgresql.migrations'),
+      },
+      jwt: {
+        access: {
+          secret: config.get<string>('jwt.access.secret'),
+          expiresIn: config.get<string>('jwt.access.expiresIn'),
+        },
+        refresh: {
+          secret: config.get<string>('jwt.refresh.secret'),
+          expiresIn: config.get<string>('jwt.refresh.expiresIn'),
+        },
       },
     };
 
