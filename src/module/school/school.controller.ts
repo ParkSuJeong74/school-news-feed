@@ -8,7 +8,7 @@ import { SchoolService } from './school.service';
 
 @ApiTags('School')
 @UseGuards(SchoolAdminJwtAuthGuard)
-@Controller('school')
+@Controller('schools')
 export class SchoolController {
   constructor(private readonly schoolService: SchoolService) {}
 
