@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  jest-classting-postgresql:
+    build:
+      context: postgresql
+      dockerfile: Dockerfile
+    container_name: jest-classting-postgresql
+    ports:
+      - '55556:5432'
+      - '55557:5432'
+    environment:
+      - POSTGRES_USER=classting
+      - POSTGRES_PASSWORD=classting
+      - POSTGRES_DB=classting
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
