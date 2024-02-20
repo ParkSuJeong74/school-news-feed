@@ -30,5 +30,5 @@ export class SchoolEntity extends BasicEntity implements SchoolInterface {
 
   @OneToMany(() => NewsEntity, (news) => news.school)
   @JoinColumn([{ name: 'school_id', referencedColumnName: 'id' }])
-  news: NewsEntity[];
+  news?: NewsEntity[];
 }

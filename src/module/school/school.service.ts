@@ -15,7 +15,9 @@ export class SchoolService {
     }
 
     try {
-      await SchoolRepository.save(plainToInstance(SchoolEntity, body));
+      await SchoolRepository.save(
+        plainToInstance(SchoolEntity, { schoolAdminId, ...body }),
+      );
     } catch (err) {
       throw new Error('학교를 생성하지 못했습니다.');
     }

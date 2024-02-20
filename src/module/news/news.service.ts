@@ -10,12 +10,16 @@ import { NewsRepository } from './news.repository';
 
 @Injectable()
 export class NewsService {
-  async createNews(schoolAdminId: number, body: RequestCreateNewsDto) {
+  async createNews(
+    schoolAdminId: number,
+    schoolId: number,
+    body: RequestCreateNewsDto,
+  ) {
     await this.checkAccessNews(schoolAdminId);
 
     try {
       await NewsRepository.save(
-        plainToInstance(NewsEntity, { schoolAdminId, ...body }),
+        plainToInstance(NewsEntity, { schoolAdminId, schoolId, ...body }),
       );
     } catch (err) {
       throw new Error('학교 소식을 생성하지 못했습니다.');

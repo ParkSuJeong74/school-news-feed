@@ -27,10 +27,11 @@ export class NewsController {
   @Post()
   @ApiOperation({ summary: '2. 소식 작성' })
   async create(
+    @Param('schoolId') schoolId: number,
     @SchoolAdminId() schoolAdminId: number,
     @Body() body: RequestCreateNewsDto,
   ) {
-    await this.newsService.createNews(schoolAdminId, body);
+    await this.newsService.createNews(schoolAdminId, schoolId, body);
   }
 
   @Get()

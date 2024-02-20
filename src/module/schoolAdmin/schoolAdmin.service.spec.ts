@@ -25,11 +25,11 @@ describe('StudentService', () => {
   });
 
   describe('Test: createSchoolAdmin', () => {
-    describe('When: 정상적인 body param이 입력되었을때', () => {
-      const body = plainToInstance(RequestCreateSchoolAdminDto, {
-        name: '테스트 학교 관리자',
-      });
+    const body = plainToInstance(RequestCreateSchoolAdminDto, {
+      name: '테스트 학교 관리자',
+    });
 
+    describe('When: 정상적인 body param이 입력되었을때', () => {
       it('Then: 학교 관리자 생성 성공', async () => {
         await schoolAdminService.createSchoolAdmin(body);
         const actual = await SchoolAdminRepository.findOneBy({
@@ -58,10 +58,6 @@ describe('StudentService', () => {
           .mockImplementation(async () => {
             throw new Error();
           });
-      });
-
-      const body = plainToInstance(RequestCreateSchoolAdminDto, {
-        name: '테스트 학교 관리자',
       });
 
       it('Then: throw new Error', async () => {

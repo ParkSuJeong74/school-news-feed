@@ -3,7 +3,7 @@ import {
   RequestCreateNewsInterface,
   RequestUpdateNewsInterface,
 } from '@src/interface/news.interface';
-import { IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class RequestCreateNewsDto implements RequestCreateNewsInterface {
   @ApiProperty({
@@ -12,13 +12,6 @@ export class RequestCreateNewsDto implements RequestCreateNewsInterface {
   })
   @IsString()
   content: string;
-
-  @ApiProperty({
-    description: '학교 ID',
-    example: 1,
-  })
-  @IsNumber()
-  schoolId: number;
 }
 
 export class RequestUpdateNewsDto implements RequestUpdateNewsInterface {

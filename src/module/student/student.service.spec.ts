@@ -25,11 +25,11 @@ describe('StudentService', () => {
   });
 
   describe('Test: createStudent', () => {
-    describe('When: 정상적인 body param이 입력되었을때', () => {
-      const body = plainToInstance(RequestCreateStudentDto, {
-        name: '테스트 학생',
-      });
+    const body = plainToInstance(RequestCreateStudentDto, {
+      name: '테스트 학생',
+    });
 
+    describe('When: 정상적인 body param이 입력되었을때', () => {
       it('Then: 학생 생성 성공', async () => {
         await studentService.createStudent(body);
         const actual = await StudentRepository.findOneBy({
@@ -58,16 +58,11 @@ describe('StudentService', () => {
         });
       });
 
-      const body = plainToInstance(RequestCreateStudentDto, {
-        name: '테스트 학생',
-      });
-
       it('Then: throw new Error', async () => {
         await studentService
           .createStudent(body)
           .then(() => expect(1).toBe(0))
           .catch((err) => {
-            console.log(err.message);
             expect(err.message).toEqual('학생을 생성하지 못했습니다.');
           });
       });

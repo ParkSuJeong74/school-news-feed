@@ -8,10 +8,7 @@ export interface NewsInterface {
   createdAt: Date;
 }
 
-export type RequestCreateNewsInterface = Pick<
-  NewsInterface,
-  'content' | 'schoolId'
->;
+export type RequestCreateNewsInterface = Pick<NewsInterface, 'content'>;
 export type RequestUpdateNewsInterface = Pick<NewsInterface, 'content'>;
 export type ResponseNewsInterface = Pick<
   NewsInterface,
