@@ -14,4 +14,4 @@ export type ResponseSchoolInterface = Pick<
 export type ResponseSchoolNewsInterface = Pick<
   SchoolInterface,
   'id' | 'name'
-> & { news: ResponseNewsInterface[] };
+> & { news?: ResponseNewsInterface[] };
