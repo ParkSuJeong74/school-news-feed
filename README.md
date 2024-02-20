@@ -29,22 +29,25 @@
 ## Installation
 
 ```bash
+# 의존성 설치를 해주세요.
 $ yarn install
 ```
 
 ## Running the app
 
 ```bash
-# docker
+# docker로 데이터베이스 세팅을 해주세요.
 $ docker-compose -f docker/docker-compose.yml up -d --build
 
-# node version
+# node version을 동일하게 사용하기 위한 nvm 세팅해주세요.
 $ nvm install
 $ nvm use
 
 # watch mode running
 $ yarn run start:dev
 ```
+
+Dotenv 세팅을 위해 .envrc.sample 을 .envrc 파일로 변경하고 `direnv allow` 명령어를 호출해주세요.
 
 ## ERD
 ```mermaid
@@ -83,6 +86,8 @@ erDiagram
 
 1. 학교 관리자 생성 및 목록 조회
 
+학교 관리자를 생성하고 모든 학교 관리자를 조회할 수 있는 간단한 API입니다.
+
 ```
 학교 관리자를 생성할 수 있는 API
 POST /school-admins
@@ -96,6 +101,8 @@ GET /school-admins
 
 1-1. 학교 관리자 로그인
 
+학교 관리자 로그인 기능입니다. 편의상 refreshToken과 토큰 재발행 기능은 개발하지 않고, accessToken 만 생성합니다.
+
 ```
 학교 관리자 로그인 API
 POST /auth/login/school-admins/:schoolAdminId
@@ -104,6 +111,8 @@ POST /auth/login/school-admins/:schoolAdminId
 ```
 
 2. 학교 페이지 생성 및 목록 조회
+
+학교 관리자 로그인 후 학교 페이지 생성 및 모든 학교를 조회할 수 있는 간단한 API입니다.
 
 ```
 학교를 생성할 수 있는 API
@@ -118,6 +127,8 @@ GET /schools
 ```
 
 3. 학교 관리자가 학교 페이지에 소식 작성, 수정, 삭제
+
+학교 관리자가 학교 페이지에 소식을 생성하고 수정, 삭제하는 기능입니다.
 
 ```
 학교 소식을 생성할 수 있는 API
@@ -142,6 +153,8 @@ DELETE /schools/:schoolId/news/:newsId
 
 4. 학생 생성 및 목록 조회
 
+학생을 생성하고 모든 목록을 조회하는 기능입니다.
+
 ```
 학생을 생성할 수 있는 API
 POST /students
@@ -155,6 +168,8 @@ GET /students
 
 4-1. 학생 로그인
 
+학생 로그인 기능입니다. 마찬가지로 refreshToken과 토큰 재발행 기능은 개발하지 않고, accessToken 만 생성합니다.
+
 ```
 학생 로그인 API
 POST /auth/login/students/:studentId
@@ -164,6 +179,8 @@ POST /auth/login/students/:studentId
 
 
 5. 학생의 학교 구독 및 구독한 학교, 소식 목록 조회, 구독 취소 (최신순 노출)
+
+로그인한 학생의 학교 페이지 구독과 구독한 학교 목록 조회 및 해당 학교의 소식 목록를 조회하는 기능입니다. 또한 구독 취소를 할 수 있습니다.
 
 ```
 학생이 학교 페이지 구독하는 API
@@ -183,6 +200,9 @@ GET /subscribe/schools/news
 ```
 
 6. 학생이 구독중인 학교 소식 뉴스피드 조회
+
+학생의 뉴스피드 조회 기능입니다. 구독한 모든 학교의 소식을 최신순으로 조회할 수 있습니다.
+
 ```
 뉴스피드 목록 조회하는 API
 GET /news-feed
@@ -193,6 +213,9 @@ GET /news-feed
 실행 후 http://localhost:3000/api/docs
 
 ## Test
+
+테스트코드는 학교, 학교 관리자, 학생, 소식 생성 기능에 대한 unit 테스트코드를 작성했습니다.
+가능하다면 추후 다른 기능에 대한 테스트코드를 추가할 예정.
 
 ```bash
 # unit tests
